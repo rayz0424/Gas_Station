@@ -1,0 +1,20 @@
+<?php
+include 'auth_mpi_mac.php';
+$MerchantID="8220200000056";
+$TerminalID="90200056";
+$lidm="811200076";
+$purchAmt="1990";
+$txType="0";
+$Option="1";
+$Key="MNL0iUjhyIa1O570ekxehFIZ";
+$MerchantName="中國信託測試";
+$AuthResURL="https://testepos.ctbcbank.com/mauth/SSLAuthUI.jsp";
+$OrderDesc="測試訂單";
+$AutoCap="1";
+$Customize="1";
+$debug="0";
+$MACString=auth_in_mac($MerchantID,$TerminalID,$lidm,$purchAmt,$txType,$Option,$Key,$MerchantName,$AuthResURL,$OrderDesc,$AutoCap,$Customize,$debug);
+echo"InMac=$MACString\n";
+$URLEnc=get_auth_urlenc($MerchantID,$TerminalID,$lidm,$purchAmt,$txType,$Option,$Key,$MerchantName,$AuthResURL,$OrderDesc,$AutoCap,$Customize,$MACString,$debug);
+echo"UrlEnc=$URLEnc\n";
+?>
